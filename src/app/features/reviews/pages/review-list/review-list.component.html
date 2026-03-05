@@ -1,1 +1,3 @@
-<p>review-list works!</p>
+@for (review of reviews; track review.id) {
+  <app-review-card [review]="review"></app-review-card>
+}

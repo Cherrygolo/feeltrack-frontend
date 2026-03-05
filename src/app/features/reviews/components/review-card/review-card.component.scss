@@ -1,25 +1,64 @@
-@import 'variables';
-
 .card {
-    background-color: $card-background;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
     padding: 1.5rem;
-    margin-bottom : 1rem;
+    margin-bottom: 1rem;
     border-radius: $border-radius;
     box-shadow: 0 4px 6px $shadow-color;
     font-weight: 600;
+    background-color: $card-background;
+    position: relative;
+
+    .badge {
+        flex-shrink: 0;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-top: 0.3rem; // centré verticalement
+    }
 
     &.positive {
         border-left: 6px solid $positive-color;
-        color: $positive-color;
+        background-color: transparentize($positive-color, 0.8);
+
+        .badge {
+            background-color: $positive-color;
+        }
     }
 
     &.negative {
         border-left: 6px solid $negative-color;
-        color: $negative-color;
+        background-color: transparentize($negative-color, 0.8);
+
+        .badge {
+            background-color: $negative-color;
+        }
     }
 
     &.neutral {
         border-left: 6px solid $neutral-color;
-        color: $neutral-color;
+        background-color: transparentize($neutral-color, 0.8);
+
+        .badge {
+            background-color: $neutral-color;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .author {
+        font-weight: bold;
+        font-size: 0.8rem;
+        color: #555;
+        margin-bottom: 0.2rem;
+    }
+
+    .text {
+        color: #222;
+        line-height: 1.4;
     }
 }

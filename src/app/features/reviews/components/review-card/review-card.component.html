@@ -1,1 +1,7 @@
-<p>review-card works!</p>
+<div class="card" [ngClass]="sentimentClass">
+  <div class="badge"></div>
+  <div class="content">
+    <p class="author">{{ review.customer.email }}</p>
+    <p class="text">{{ review.text }}</p>
+  </div>
+</div>
