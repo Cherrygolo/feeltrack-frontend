@@ -11,4 +11,8 @@ export class ReviewService {
   getAllReviews() {
     return this.http.get<Review[]>('http://localhost:8080/api/review');
   }
+
+  getAllReviewsByType(sentiment: string) {
+    return this.http.get<Review[]>(`http://localhost:8080/api/review?type=${sentiment}`);
+  }
 }

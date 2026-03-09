@@ -1,0 +1,20 @@
+@import 'variables';
+
+.filters {
+  margin-bottom: 20px;
+}
+
+.filters button {
+  padding: 8px 14px;
+  margin-right: 8px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.filters button.active {
+  background: $accent-color;
+  color: white;
+  border-color: $primary-color;
+}

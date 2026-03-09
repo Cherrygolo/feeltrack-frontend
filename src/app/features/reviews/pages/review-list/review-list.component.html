@@ -1,5 +1,33 @@
 <h1>Avis existants</h1>
+
+<div class="filters">
+  <button 
+  (click)="onFilterChange('ALL')" 
+  [class.active]="selectedReviewType === 'ALL'">
+    Tous
+  </button>
+
+  <button 
+  (click)="onFilterChange('POSITIVE')" 
+  [class.active]="selectedReviewType === 'POSITIVE'">
+    😊 Positif
+  </button>
+
+  <button 
+  (click)="onFilterChange('NEUTRAL')" 
+  [class.active]="selectedReviewType === 'NEUTRAL'">
+    😐 Neutre
+  </button>
+
+  <button 
+  (click)="onFilterChange('NEGATIVE')" 
+  [class.active]="selectedReviewType === 'NEGATIVE'">
+    😡 Négatif
+  </button>
+</div>
+
 @let reviews = reviews$ | async;
+
 @if (loading) {
   <app-spinner [size]="60" message="Chargement des avis en cours"></app-spinner>
 } @else if (!reviews || reviews.length === 0) {
