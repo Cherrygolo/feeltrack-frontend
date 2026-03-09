@@ -14,8 +14,12 @@
     .brand {
         font-size: 1.5rem;
         font-weight: 700;
-        color: $accent-color;
+        // color: $accent-color;
         margin-right: 3rem;
+        background: -webkit-linear-gradient(0deg,$secondary-color, $accent-color);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     a {
