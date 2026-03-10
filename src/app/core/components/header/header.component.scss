@@ -1,7 +1,16 @@
 @import 'variables';
 
-.navbar {
+// Fixed the headerat the top of the page
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: $header-height;
     width: 100%;
+    z-index: 1000;
+}
+
+.navbar {    
     background-color: $nav-background;
     color: #fff;
     display: flex;
@@ -15,7 +24,7 @@
         font-size: 1.5rem;
         font-weight: 700;
         // color: $accent-color;
-        margin-right: 3rem;
+        margin-right: auto ; //3rem;
         background: -webkit-linear-gradient(0deg,$secondary-color, $accent-color);
         background-clip: text;
         -webkit-background-clip: text;
