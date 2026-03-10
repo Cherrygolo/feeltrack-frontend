@@ -30,6 +30,18 @@
 
 @if (loading) {
   <app-spinner [size]="60" message="Chargement des avis en cours"></app-spinner>
+} @else if (errorMessage) {
+
+  <div class="error">
+  <span class="error-message"><mat-icon>warning</mat-icon> {{ errorMessage }}</span>
+  <button mat-raised-button
+    class="retry-button"
+    [disabled]="loading"
+    (click)="reloadReviews()">
+    <mat-icon>refresh</mat-icon> Réessayer
+  </button>
+</div>
+
 } @else if (!reviews || reviews.length === 0) {
   <p>Aucun avis trouvé.</p>
 } @else {

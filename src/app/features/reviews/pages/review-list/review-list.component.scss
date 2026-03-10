@@ -18,3 +18,49 @@
   color: white;
   border-color: $primary-color;
 }
+
+.retry-button {
+  margin-top: 12px;
+  padding: 8px 16px;
+
+  border-radius: $border-radius;
+  border: none;
+
+  background: $primary-color!important;
+  color: white!important;
+
+  font-weight: 500;
+  cursor: pointer;
+
+  box-shadow: 0 2px 6px $shadow-color;
+
+  transition: 
+    background 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+.retry-button:hover {
+  background-color: $accent-color!important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px $shadow-color;
+}
+
+.retry-button:active {
+  background-color: $primary-color!important;
+  transform: scale(0.97);
+}
+
+.error {
+  margin-top: 20px;
+  padding: 16px;
+
+  border-radius: $border-radius;
+
+  background: lighten($negative-color, 40%);
+  color: darken($negative-color, 20%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

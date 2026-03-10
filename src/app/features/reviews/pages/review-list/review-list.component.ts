@@ -1,9 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';  
+import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon'
 import { ReviewCardComponent } from '../../components/review-card/review-card.component';
 import { ReviewService } from '@features/reviews/services/review.service';
 import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.component';
-import { BehaviorSubject, finalize, Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, finalize, Observable, of, switchMap } from 'rxjs';
 import { Review } from '@features/reviews/models/review.model';
 
 @Component({
@@ -11,7 +13,9 @@ import { Review } from '@features/reviews/models/review.model';
   imports: [
     ReviewCardComponent,
     AsyncPipe,
-    SpinnerComponent
+    SpinnerComponent,
+    MatIconModule,
+    MatButtonModule
   ],
   templateUrl: './review-list.component.html',
   styleUrl: './review-list.component.scss',
@@ -21,6 +25,8 @@ export class ReviewListComponent {
   private reviewService = inject(ReviewService);
   reviews$!: Observable<Review[]>;
   loading = false;
+  errorMessage = '';
+  
   private reviewType$ = new BehaviorSubject<string>('ALL');
   selectedReviewType = 'ALL';
 
@@ -31,15 +37,19 @@ export class ReviewListComponent {
 
       switchMap(reviewType => {
 
+        this.errorMessage = '';
         this.loading = true;
 
-        if (reviewType === 'ALL') {
-          return this.reviewService.getAllReviews().pipe(
-            finalize(() => this.loading = false)
-          );
-        }
+        const request$ =
+          reviewType === 'ALL'
+            ? this.reviewService.getAllReviews()
+            : this.reviewService.getAllReviewsByType(reviewType);
 
-        return this.reviewService.getAllReviewsByType(reviewType).pipe(
+        return request$.pipe(
+          catchError((error) => {
+            this.errorMessage = `Erreur lors du chargement des avis : ${error.userMessage || 'Une erreur est survenue.'}`;
+            return of([]);
+          }),
           finalize(() => this.loading = false)
         );
 
@@ -62,5 +72,9 @@ export class ReviewListComponent {
     // Update the review type to trigger the BehaviorSubject stream
     this.reviewType$.next(reviewType);
 
+  }
+
+  reloadReviews() {
+    this.reviewType$.next(this.selectedReviewType);
   }
 }
