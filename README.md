@@ -22,7 +22,7 @@ Application de gestion et de suivi des avis (reviews) construite avec Angular 21
 ### Fonctionnalités principales
 - 📝 Création d'avis avec formulaire intuitif
 - 📋 Affichage d'une liste d'avis
-- 🎨 Interface responsive et moderne
+- 🎨 Interface responsive et moderne, utilisant SCSS et TailwindCSS
 - 🔄 Gestion d'état réactive avec RxJS
 - 🔌 Communication avec l'API backend
 
@@ -150,6 +150,7 @@ src/
 | **TypeScript** | ~5.9.2 | Langage de programmation |
 | **RxJS** | ~7.8.0 | Programmation réactive |
 | **SCSS** | - | Préprocesseur CSS |
+| **TailwindCSS** | 3.4 | Utilitaires CSS rapides avec thème personnalisable
 | **Vitest** | - | Framework de test |
 | **Prettier** | - | Formatteur de code |
 
