@@ -13,11 +13,11 @@ export class ReviewService {
 
   private http = inject(HttpClient);
 
-  getAllReviews() {
+  getAllReviews(): Observable<Review[]> {
     return this.http.get<Review[]>(API_URL);
   }
 
-  getAllReviewsByType(sentiment: string) {
+  getAllReviewsByType(sentiment: string): Observable<Review[]> {
     return this.http.get<Review[]>(`${API_URL}?type=${sentiment}`);
   }
 
