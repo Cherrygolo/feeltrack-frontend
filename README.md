@@ -40,6 +40,11 @@ npm --version     # 11.x.x ou supérieur
 ng version        # Angular CLI: 21.1.4
 ```
 
+## Démonstrations
+
+### Création d’un avis
+![Création](docs/gifs/review-creation-demo.gif)
+
 ## Installation
 
 1. **Cloner le repository** (ou extraire le projet)
