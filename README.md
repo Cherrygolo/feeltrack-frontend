@@ -130,9 +130,14 @@ src/
 │   │       ├── review.routes.ts
 │   │       ├── components/    # Composants réutilisables
 │   │       │   └── review-card/
-│   │       └── pages/         # Pages métier
-│   │           ├── review-list/
-│   │           └── review-creation-form/
+│   │       │
+│   │       ├── mappers/       # Transformation DTO <-> Model
+│   │       ├── models/        # Interfaces / types liés au domaine
+│   │       ├── pages/         # Pages métier
+│   │       │   ├── review-list/
+│   │       │   └── review-creation-form/
+│   │       └── services/      # Logique d'accès aux données / API
+│   │           └── review.service.ts
 │   │
 │   └── shared/                # Composants et services partagés
 │
