@@ -6,8 +6,6 @@ import { ReviewService } from '@features/reviews/services/review.service';
 import { ReviewCardComponent } from '@features/reviews/components/review-card/review-card.component';
 import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.component';
 
-type ReviewType = 'ALL' | 'POSITIVE' | 'NEUTRAL' | 'NEGATIVE';
-
 @Component({
   selector: 'app-review-list',
   imports: [

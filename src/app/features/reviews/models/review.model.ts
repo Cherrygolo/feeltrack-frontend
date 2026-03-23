@@ -1,6 +1,6 @@
 import { Customer } from '@features/customers/models/customer.model';
 
-export type ReviewType = 'NEGATIVE' | 'NEUTRAL' | 'POSITIVE';
+export type ReviewType = 'ALL' | 'NEGATIVE' | 'NEUTRAL' | 'POSITIVE';
 
 export type Review = {
   id: string;
