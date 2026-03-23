@@ -19,8 +19,8 @@ export class ReviewService {
     return this.http.get<Review[]>(API_URL);
   }
 
-  getAllReviewsByType(sentiment: string): Observable<Review[]> {
-    return this.http.get<Review[]>(`${API_URL}?type=${sentiment}`);
+  getAllReviewsByType(reviewType: string): Observable<Review[]> {
+    return this.http.get<Review[]>(`${API_URL}?type=${reviewType}`);
   }
 
   getReviewStats(): Observable<ReviewStats> {
