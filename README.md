@@ -31,8 +31,12 @@ FeelTrack est une application permettant de collecter et analyser des avis utili
 
 ## Démonstrations
 
+### Consultation des avis avec filtrage par type
+![Démonstration de la consultation des avis en sélectionnant les filtres par type](docs/gifs/review-filter-demo.gif)
+
+
 ### Création d’un avis
-![Création](docs/gifs/review-creation-demo.gif)
+![Démonstration de la création d’un avis](docs/gifs/review-creation-demo.gif)
 
 ## Prérequis
 
