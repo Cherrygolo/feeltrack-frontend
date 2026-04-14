@@ -2,7 +2,7 @@
 
 Frontend de l’application full stack FeelTrack (Angular + Spring Boot).
 
-FeelTrack est une application permettant de collecter et analyser des avis utilisateurs, avec catégorisation automatique des sentiments.
+FeelTrack est une application permettant de collecter et analyser des avis utilisateurs, avec catégorisation automatique des sentiments (positif, neutre, négatif).
 
 ## 📋 Table des matières
 
@@ -208,15 +208,6 @@ Schematics configurés dans `angular.json` :
 - Style : **SCSS**
 - Tests : Désactivés par défaut (à activer manuellement)
 
-## 🤝 Contribution
-
-Les contributions sont les bienvenues ! Veuillez :
-
-1. Créer une branche pour votre fonctionnalité (`git checkout -b feature/ma-fonction`)
-2. Commiter vos changements (`git commit -am 'Ajouter une fonctionnalité'`)
-3. Pousser vers la branche (`git push origin feature/ma-fonction`)
-4. Ouvrir une Pull Request
-
 ### Standards de code
 
 - Suivre les conventions de nommage indiquées ci-dessus
@@ -224,11 +215,3 @@ Les contributions sont les bienvenues ! Veuillez :
 - Ajouter des tests unitaires pour les nouvelles fonctionnalités
 - Utiliser `ng generate` pour créer les nouveaux éléments
 - Formater le code avec Prettier
-
-## 📄 License
-
-Veuillez consulter le fichier LICENSE pour plus de détails sur la licence de ce projet.
-
----
-
-**Besoin d'aide ?** Consultez la [documentation officielle Angular](https://angular.dev) ou le [guide CLI Angular](https://angular.dev/tools/cli).
