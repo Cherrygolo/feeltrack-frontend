@@ -6,6 +6,7 @@ export type ReviewStats = Record<ReviewType, number>;
 
 export type Review = {
   id: string;
+  createdAt: Date;
   text: string;
   type: ReviewType;
   customer: Customer;

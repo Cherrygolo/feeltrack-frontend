@@ -1,4 +1,4 @@
-import { NgClass } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import { Component, Input, signal } from '@angular/core';
 import { Review } from '@features/reviews/models/review.model';
 import { MaskEmailPipe } from 'src/app/shared/pipes/MaskEmailPipe';
@@ -8,7 +8,8 @@ import { MaskEmailPipe } from 'src/app/shared/pipes/MaskEmailPipe';
   standalone: true,
   imports: [
     NgClass,
-    MaskEmailPipe
+    MaskEmailPipe,
+    DatePipe
   ],
   templateUrl: './review-card.component.html',
   styleUrls: ['./review-card.component.scss'],

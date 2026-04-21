@@ -1,7 +1,7 @@
 <div class="card" [ngClass]="[sentimentClass, isHighlight() ? 'highlight' : '']">
   <div class="badge"></div>
   <div class="content">
-    <p class="author">{{ review.customer.email | maskEmail }}</p>
+    <p class="author">{{ review.customer.email | maskEmail }} ({{ review.createdAt | date : 'd MMMM yyyy, à HH:mm' }})</p>
     <p class="text">{{ review.text }}</p>
   </div>
 </div>
