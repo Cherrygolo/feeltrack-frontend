@@ -1,4 +1,31 @@
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-1">
-  <app-review-type-repartition-chart>
+@if (hasAnyError()) {
+
+  <div class="alert alert-error bg-red-400 mb-4">
+
+    Une ou plusieurs statistiques n'ont pas pu être chargées.
+
+    <button
+      class="btn btn-primary btn-sm"
+      (click)="retryAll()">
+
+      Réessayer
+
+    </button>
+
+  </div>
+
+}
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mx-auto">
+
+  <app-review-type-repartition-chart
+   (errorChange)="reviewTypeRepartitionChartError.set($event)">
   </app-review-type-repartition-chart>
+
+  <div class="lg:col-span-2">
+    <app-review-evolution-chart
+     (errorChange)="reviewEvolutionChartError.set($event)">
+    </app-review-evolution-chart>
+  </div>
+
 </div>

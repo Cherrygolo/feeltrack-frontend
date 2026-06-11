@@ -1,15 +1,4 @@
-@if (statsState.loading()) {
-
-  <div class="flex flex-col gap-6">
-    <app-spinner
-      [size]="60"
-      message="Chargement des statistiques en cours">
-    </app-spinner>
-  </div>
-
-}
-
-@else if (statsState.error()) {
+@if (hasError()) {
 
   <div class="flex flex-col items-center justify-center gap-4 p-10 text-center">
 
@@ -18,10 +7,10 @@
     </div>
 
     <div class="text-gray-600">
-      {{ statsState.error() }}
+      {{ errorMessage() }}
     </div>
 
-    <button class="btn btn-primary" (click)="statsState.retry()">
+    <button class="btn btn-primary" (click)="retry()">
       Réessayer
     </button>
 
@@ -31,13 +20,22 @@
 
 @else {
 
-  <div style="width: 400px">
+  <div class="relative h-[420px]">
     <canvas
       baseChart
       [data]="pieChartData()"
       [type]="'pie'"
       [options]="pieChartOptions()">
     </canvas>
+
+    @if (isLoading()) {
+      <div
+        class="absolute inset-0 flex items-center justify-center
+              bg-white/50 backdrop-blur-sm">
+
+        <app-spinner [size]="40" />
+      </div>
+    }
   </div>
 
 }

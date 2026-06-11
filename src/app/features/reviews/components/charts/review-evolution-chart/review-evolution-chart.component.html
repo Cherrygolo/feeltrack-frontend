@@ -1,0 +1,87 @@
+<!-- @if (isLoading()) {
+
+  <div class="flex flex-col gap-6">
+    <app-spinner
+      [size]="60"
+      message="Chargement des statistiques en cours">
+    </app-spinner>
+  </div>
+
+}
+
+@else if (hasError()) {-->
+
+@if (hasError()) {
+
+  <div class="flex flex-col items-center justify-center gap-4 p-10 text-center">
+
+    <div class="text-red-500 text-lg font-medium">
+      ⚠ Une erreur est survenue
+    </div>
+
+    <div class="text-gray-600">
+      {{ errorMessage() }}
+    </div>
+
+    <button class="btn btn-primary" (click)="retry()">
+      Réessayer
+    </button>
+
+  </div>
+
+}
+
+@else {
+
+    <div class="flex items-center justify-end gap-3 mb-4">
+
+        <label
+            for="selectForPeriod"
+            class="text-sm font-medium text-gray-600">
+            Période :
+        </label>
+
+        <select
+            id="selectForPeriod"
+            class="select select-sm w-40
+                bg-neutral-secondary-medium
+                border border-default-medium
+                text-heading
+                rounded-lg
+                focus:ring-2 focus:ring-brand focus:border-brand
+                shadow-sm
+                transition-all"
+            (change)="onPeriodChange($event.target.value)"
+            [value]="selectedDays()">
+
+            <option value="7">7 jours</option>
+            <option value="30">30 jours</option>
+            <option value="90">90 jours</option>
+            <option value="180">6 mois</option>
+            <option value="365">1 an</option>
+
+        </select>
+
+    </div>
+
+    <div class="relative h-[420px]">
+
+      <canvas
+        baseChart
+        [data]="lineChartData()"
+        [type]="'line'"
+        [options]="lineChartOptions()">
+      </canvas>
+
+      @if (isLoading()) {
+        <div
+          class="absolute inset-0 flex items-center justify-center
+                bg-white/50 backdrop-blur-sm">
+
+          <app-spinner [size]="40" />
+        </div>
+      }
+
+    </div>
+
+}

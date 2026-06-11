@@ -1,4 +1,4 @@
-import { inject, signal, effect, computed, Component } from "@angular/core";
+import { inject, signal, effect, computed, Component, EventEmitter, Output } from "@angular/core";
 import { ReviewStats } from "@features/reviews/models/review.model";
 import { ReviewService } from "@features/reviews/services/review.service";
 import { ChartConfiguration, ChartOptions, TooltipItem } from "chart.js";
@@ -19,9 +19,14 @@ export class ReviewTypeRepartitionChartComponent {
   private reviewService = inject(ReviewService);
   private chartColorService = inject(ChartColorService);
 
+  @Output() errorChange = new EventEmitter<boolean>();
+
+  // State for fetching review stats
   statsState = createAsyncState(() =>
     this.reviewService.getReviewStats()
   );
+
+  // State for the pie chart data and options
 
   pieChartData = signal<ChartConfiguration<'pie'>['data']>({
     labels: [],
@@ -31,13 +36,17 @@ export class ReviewTypeRepartitionChartComponent {
   pieChartOptions = signal<ChartOptions<'pie'>>({});
 
   constructor() {
+    // Effect to update chart data and options when stats are loaded
     effect(() => {
       const stats = this.statsState.data();
       if (stats) {
         this.loadStatsByType(stats);
+        this.errorChange.emit(false);
+      } else if (this.statsState.error()) {
+        this.errorChange.emit(true);
       }
     });
-
+    // Start fetching review stats
     this.statsState.run();
   }
 
@@ -83,6 +92,10 @@ export class ReviewTypeRepartitionChartComponent {
         },
       },
     });
+  }
+
+  retry() {
+    this.statsState.retry();
   }
 
   isLoading = computed(() =>

@@ -30,3 +30,9 @@ export const FAKE_REVIEWS = [
         }
     }
 ]
+
+export const FAKE_REVIEW_STATS_API_RESPONSE = {
+    "positive": 10,
+    "neutral": 2,
+    "negative": 5
+}

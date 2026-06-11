@@ -41,7 +41,6 @@ export class ReviewCreationFormComponent {
       this.reviewForm.markAllAsTouched();
       return;
     } else {
-      
       // DTO construction from form values to be sent to the backend
       const reviewDto: ReviewCreateDto = {
         text: this.reviewForm.value.review!,
@@ -50,6 +49,8 @@ export class ReviewCreationFormComponent {
           phone: this.reviewForm.value.phone || undefined,
         },
       };
+
+      console.log('review created dto : ', reviewDto);
 
       this.isSubmitting.set(true);
       this.submitSuccess.set(false);

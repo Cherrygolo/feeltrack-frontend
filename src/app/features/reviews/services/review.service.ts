@@ -4,7 +4,9 @@ import { Review, ReviewStats} from "../models/review.model";
 import { map, Observable } from "rxjs";
 import { ReviewCreateDto } from "../models/dto/create-review.dto";
 import { ApiReviewStats } from "../models/dto/api-review-stats.dto";
+import { ApiReviewTimeline } from "../models/dto/api-review-timeline.dto";
 import { mapReviewStats } from "../mappers/review.mapper";
+import { FAKE_REVIEW_STATS_API_RESPONSE } from "@test-data/fake-review-data";
 
 const API_URL = 'http://localhost:8080/api/review';
 
@@ -27,6 +29,10 @@ export class ReviewService {
     return this.http.get<ApiReviewStats>(`${API_URL}/stats`).pipe(
       map(mapReviewStats)
     );
+  }
+
+  getReviewTimeline(days: number) {
+    return this.http.get<ApiReviewTimeline>(`${API_URL}/stats/timeline?days=${days}`);
   }
 
   postReview(dto: ReviewCreateDto): Observable<Review> {
