@@ -16,7 +16,7 @@
 }
 
 .text {
-  @apply text-gray-800 leading-relaxed;
+  @apply text-gray-800 leading-relaxed whitespace-pre-wrap;
 }
 
 /* Variations of card styles */
