@@ -74,6 +74,8 @@ export class ReviewTypeRepartitionChartComponent {
     });
 
     this.pieChartOptions.set({
+      responsive: true,
+      maintainAspectRatio: false,// Allow the chart to resize dynamically
       plugins: {
         title: {
           display: true,

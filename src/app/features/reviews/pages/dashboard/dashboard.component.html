@@ -18,9 +18,11 @@
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mx-auto">
 
-  <app-review-type-repartition-chart
-   (errorChange)="reviewTypeRepartitionChartError.set($event)">
-  </app-review-type-repartition-chart>
+  <div class="justify-self-center lg:justify-self-stretch">
+    <app-review-type-repartition-chart
+      (errorChange)="reviewTypeRepartitionChartError.set($event)">
+    </app-review-type-repartition-chart>
+  </div>
 
   <div class="lg:col-span-2">
     <app-review-evolution-chart
