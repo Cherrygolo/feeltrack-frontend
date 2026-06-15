@@ -18,7 +18,17 @@ FeelTrack est une application permettant de collecter et analyser des avis utili
 
 ## À propos
 
-**FeelTrack** est une interface utilisateur permettant de gérer et visualiser des avis en temps réel. Le projet utilise une architecture orientée fonctionnalités avec Angular 21 et des composants autonomes (standalone components).
+**FeelTrack** est une interface utilisateur permettant de renseigner et visualiser des avis en temps réel. Le projet utilise une architecture orientée fonctionnalités avec Angular 21 et des composants autonomes (standalone components).
+
+### Analyse des avis
+
+Le dashboard fournit une vue synthétique de l'activité grâce à :
+
+- une répartition des sentiments (positif, neutre, négatif),
+- une visualisation de l'évolution des avis dans le temps,
+- une adaptation automatique de l'affichage selon la période sélectionnée.
+
+Ces visualisations permettent d'identifier rapidement les tendances et d'évaluer la perception globale des utilisateurs.
 
 > **ℹ️ Note** : Il s'agit de l'application **frontend** de FeelTrack. Elle communique avec le backend disponible à : [github.com/Cherrygolo/sa-backend](https://github.com/Cherrygolo/sa-backend)
 
@@ -27,14 +37,18 @@ FeelTrack est une application permettant de collecter et analyser des avis utili
 - 📋 Affichage d'une liste d'avis filtrable par type (positif / négatif / neutre)
 - 🎨 Interface responsive et moderne, utilisant SCSS et TailwindCSS
 - 🔄 Gestion d'état réactive avec RxJS
+- 📊 Dashboard analytique avec visualisation des tendances et de la répartition des sentiments
 - 🔌 Communication avec l'API backend
 
-### 📊 Dashboard analytique (v1)
-- 📉 Visualisation des avis sous forme de graphique en camembert (Chart.js / ng2-charts)
-- 🧠 Affichage des proportions avec tooltip enrichi (valeur + pourcentage)
-- 🏷️ Titre dynamique basé sur les données (ex : volume total d’avis)
-- 🎯 Lecture instantanée de la répartition des sentiments (POSITIF / NEUTRE / NÉGATIF)
-- 📈 Première analyse des données pour faciliter la compréhension des retours utilisateurs
+### 📊 Dashboard analytique
+
+- 📉 Visualisation de la répartition des avis par sentiment via un graphique en camembert (Chart.js / ng2-charts)
+- 📈 Suivi de l'évolution temporelle des avis avec un graphique de tendance
+- 🧠 Agrégation intelligente des données selon la période sélectionnée
+- 🏷️ Formatage dynamique des périodes (jour, semaine, mois) pour une meilleure lisibilité
+- 🎯 Analyse rapide des tendances et de la distribution des sentiments
+- 🔄 Gestion robuste des erreurs avec mécanisme de retry automatique lors du chargement des données
+- 📱 Affichage responsive adapté aux différentes tailles d'écran
 
 ## Démonstrations
 
@@ -44,6 +58,9 @@ FeelTrack est une application permettant de collecter et analyser des avis utili
 
 ### Création d’un avis
 ![Démonstration de la création d’un avis](docs/gifs/review-creation-demo.gif)
+
+### Dashboard analytique
+![Démonstration du dashboard analytique](docs/gifs/dashboard-demo.gif)
 
 ## Prérequis
 
