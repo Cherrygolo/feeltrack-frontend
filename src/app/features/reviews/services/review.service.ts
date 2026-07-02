@@ -8,7 +8,9 @@ import { ApiReviewTimeline } from "../models/dto/api-review-timeline.dto";
 import { mapReviewStats } from "../mappers/review.mapper";
 import { FAKE_REVIEW_STATS_API_RESPONSE } from "@test-data/fake-review-data";
 
-const API_URL = 'http://localhost:8080/api/review';
+import { environment } from 'src/environments/environment';
+
+const API_URL = `${environment.apiUrl}/review`;
 
 @Injectable({
   providedIn: 'root'
