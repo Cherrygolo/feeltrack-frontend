@@ -23,6 +23,8 @@ export class ReviewListComponent {
 
   reviewType = signal<ReviewType>('ALL');
 
+  private loadingStart = Date.now();
+
   // highlight state after review creation
   highlightReviewId: string | null = null;
 
@@ -82,6 +84,20 @@ export class ReviewListComponent {
         }, 2000);
       }
     });
+  }
+
+  getLoadingMessage(): string {
+    const elapsed = Date.now() - this.loadingStart;
+
+    if (elapsed < 2000) {
+      return "Chargement des avis en cours...";
+    }
+
+    if (elapsed < 10000) {
+      return 'Initialisation des données...';
+    }
+
+    return 'Le serveur démarre, cela peut prendre quelques instants...';
   }
 
 
