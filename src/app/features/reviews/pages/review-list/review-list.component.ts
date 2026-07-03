@@ -23,7 +23,9 @@ export class ReviewListComponent {
 
   reviewType = signal<ReviewType>('ALL');
 
-  private loadingStart = Date.now();
+  loadingMessage = signal('Chargement des avis en cours...');
+
+  private loadingTimeouts: ReturnType<typeof setTimeout>[] = [];
 
   // highlight state after review creation
   highlightReviewId: string | null = null;
@@ -57,6 +59,14 @@ export class ReviewListComponent {
       this.reviewsState.run();
     });
 
+    effect(() => {
+      if (this.globalLoading()) {
+        this.startLoadingMessages();
+      } else {
+        this.stopLoadingMessages();
+      }
+    });
+
     // Handle navigation highlight (one-shot trigger)
     const navigation = history.state;
     if (navigation.reviewCreated) {
@@ -86,18 +96,38 @@ export class ReviewListComponent {
     });
   }
 
-  getLoadingMessage(): string {
-    const elapsed = Date.now() - this.loadingStart;
+  private startLoadingMessages(): void {
+    // Nettoyage des anciens timers
+    this.loadingTimeouts.forEach(clearTimeout);
+    this.loadingTimeouts = [];
 
-    if (elapsed < 2000) {
-      return "Chargement des avis en cours...";
-    }
+    // Initial message
+    this.loadingMessage.set('Chargement des avis en cours...');
 
-    if (elapsed < 10000) {
-      return 'Initialisation des données...';
-    }
+    // After 2 s
+    this.loadingTimeouts.push(
+      setTimeout(() => {
+        if (this.globalLoading()) {
+          this.loadingMessage.set('Initialisation des données...');
+        }
+      }, 2000)
+    );
 
-    return 'Le serveur démarre, cela peut prendre quelques instants...';
+    // After 10 s
+    this.loadingTimeouts.push(
+      setTimeout(() => {
+        if (this.globalLoading()) {
+          this.loadingMessage.set(
+            'Le serveur démarre, cela peut prendre quelques instants...'
+          );
+        }
+      }, 10000)
+    );
+  }
+
+  private stopLoadingMessages(): void {
+    this.loadingTimeouts.forEach(clearTimeout);
+    this.loadingTimeouts = [];
   }
 
 
