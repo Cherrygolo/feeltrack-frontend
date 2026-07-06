@@ -1,4 +1,4 @@
-import { inject, signal, effect, computed, Component, EventEmitter, Output } from "@angular/core";
+import { inject, signal, effect, computed, Component, EventEmitter, Output, ViewChild } from "@angular/core";
 import { ReviewStats } from "@features/reviews/models/review.model";
 import { ReviewService } from "@features/reviews/services/review.service";
 import { ChartConfiguration, ChartOptions, TooltipItem } from "chart.js";
@@ -35,6 +35,9 @@ export class ReviewTypeRepartitionChartComponent {
 
   pieChartOptions = signal<ChartOptions<'pie'>>({});
 
+  @ViewChild(BaseChartDirective)
+  chart?: BaseChartDirective;
+
   constructor() {
     // Effect to update chart data and options when stats are loaded
     effect(() => {
@@ -42,6 +45,10 @@ export class ReviewTypeRepartitionChartComponent {
       if (stats) {
         this.loadStatsByType(stats);
         this.errorChange.emit(false);
+        // resize chart after data update
+        setTimeout(() => {
+          this.chart?.chart?.resize();
+        });
       } else if (this.statsState.error()) {
         this.errorChange.emit(true);
       }

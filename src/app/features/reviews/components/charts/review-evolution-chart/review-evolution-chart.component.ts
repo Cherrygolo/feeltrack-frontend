@@ -1,4 +1,4 @@
-import { Component, signal, inject, computed, effect, EventEmitter, Output } from '@angular/core';
+import { Component, signal, inject, computed, effect, EventEmitter, Output, ViewChild } from '@angular/core';
 import { ReviewService } from '@features/reviews/services/review.service';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { ChartColorService } from 'src/app/shared/services/chart-color.service';
@@ -40,6 +40,9 @@ export class ReviewEvolutionChartComponent {
 
   lineChartOptions = signal<ChartOptions<'line'>>({});
 
+  @ViewChild(BaseChartDirective)
+  chart?: BaseChartDirective;
+
   constructor() {
 
     // refetch automatique quand la période change
@@ -62,6 +65,10 @@ export class ReviewEvolutionChartComponent {
         this.buildChart(res);
         this.loading.set(false);
         this.errorChange.emit(false);
+        // resize chart after data update
+        setTimeout(() => {
+          this.chart?.chart?.resize();
+        })
       },
       error: (err) => {
         console.log('Error fetching review timeline:', err);
