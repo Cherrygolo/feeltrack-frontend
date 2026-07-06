@@ -97,8 +97,27 @@
   </div>
 
   <!-- REVIEWS -->
+
   @if (!reviewsState.data() || reviewsState.data()!.length === 0) {
-    <p>Aucun avis trouvé.</p>
+    <div class="flex flex-col items-center justify-center gap-3 py-12 text-center">
+
+      <div class="text-5xl">📝</div>
+
+      <h2 class="text-lg font-semibold text-font">
+        Aucun avis à afficher
+      </h2>
+
+      <p class="max-w-md text-sm text-gray-600">
+        Il n'y a actuellement aucun avis correspondant à ce filtre.      
+        @if (reviewType() != 'ALL') {Sélectionnez un autre filtre.}
+        Vous pouvez revenir plus tard pour voir si de nouveaux avis ont été ajoutés, 
+        ou créer un nouvel avis en cliquant 
+        <a href="/reviews/new" rel="noopener noreferrer"
+        class="text-primary font-medium hover:text-accent transition-colors">ici</a>.
+      </p>
+
+    </div>
+
   } @else {
 
     <div class="grid gap-4">
