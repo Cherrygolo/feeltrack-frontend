@@ -2,7 +2,13 @@
 
 Frontend de l’application full stack FeelTrack (Angular + Spring Boot).
 
-FeelTrack est une application permettant de collecter et analyser des avis utilisateurs, avec catégorisation automatique des sentiments (positif, neutre, négatif).
+## 🚀 Démo en ligne
+
+🌐 https://feeltrack-frontend.vercel.app
+
+> **Note :**
+> Le backend est hébergé sur l'offre gratuite de Render. Après une période d'inactivité, le premier chargement peut prendre 1 à 2 minutes en raison d'un cold start. Une fois le serveur démarré, l'application fonctionne normalement.
+
 
 ## 📋 Table des matières
 
@@ -18,7 +24,10 @@ FeelTrack est une application permettant de collecter et analyser des avis utili
 
 ## À propos
 
-**FeelTrack** est une interface utilisateur permettant de renseigner et visualiser des avis en temps réel. Le projet utilise une architecture orientée fonctionnalités avec Angular 21 et des composants autonomes (standalone components).
+**FeelTrack** est une application full stack permettant de collecter, analyser et visualiser des avis utilisateurs. Chaque avis est automatiquement classé par sentiment (positif, neutre ou négatif), puis présenté dans un tableau de bord interactif permettant d'identifier rapidement les tendances. 
+Le projet utilise une architecture orientée fonctionnalités avec Angular 21 et des composants autonomes (standalone components).
+
+> **ℹ️ Note** : Il s'agit de l'application **frontend** de FeelTrack. Elle communique avec le backend disponible à : [github.com/Cherrygolo/sa-backend](https://github.com/Cherrygolo/sa-backend)
 
 ### Analyse des avis
 
@@ -29,8 +38,6 @@ Le dashboard fournit une vue synthétique de l'activité grâce à :
 - une adaptation automatique de l'affichage selon la période sélectionnée.
 
 Ces visualisations permettent d'identifier rapidement les tendances et d'évaluer la perception globale des utilisateurs.
-
-> **ℹ️ Note** : Il s'agit de l'application **frontend** de FeelTrack. Elle communique avec le backend disponible à : [github.com/Cherrygolo/sa-backend](https://github.com/Cherrygolo/sa-backend)
 
 ### Fonctionnalités principales
 - 📝 Création d'avis avec formulaire intuitif
