@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { FooterComponent } from 'src/app/core/components/footer/footer.component';
 import { HeaderComponent } from 'src/app/core/components/header/header.component';
 
 @Component({
@@ -7,7 +8,8 @@ import { HeaderComponent } from 'src/app/core/components/header/header.component
   standalone: true,
   imports: [
     RouterOutlet,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss'],
