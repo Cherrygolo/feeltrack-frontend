@@ -1,5 +1,5 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
-import { AsyncPipe, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { ReviewService } from '@features/reviews/services/review.service';
 import { ReviewCardComponent } from '@features/reviews/components/review-card/review-card.component';
 import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.component';
@@ -22,10 +22,6 @@ export class ReviewListComponent {
   private reviewService = inject(ReviewService);
 
   reviewType = signal<ReviewType>('ALL');
-
-  loadingMessage = signal('Chargement des avis en cours...');
-
-  private loadingTimeouts: ReturnType<typeof setTimeout>[] = [];
 
   // highlight state after review creation
   highlightReviewId: string | null = null;
@@ -59,14 +55,6 @@ export class ReviewListComponent {
       this.reviewsState.run();
     });
 
-    effect(() => {
-      if (this.globalLoading()) {
-        this.startLoadingMessages();
-      } else {
-        this.stopLoadingMessages();
-      }
-    });
-
     // Handle navigation highlight (one-shot trigger)
     const navigation = history.state;
     if (navigation.reviewCreated) {
@@ -95,41 +83,6 @@ export class ReviewListComponent {
       }
     });
   }
-
-  private startLoadingMessages(): void {
-    // Nettoyage des anciens timers
-    this.loadingTimeouts.forEach(clearTimeout);
-    this.loadingTimeouts = [];
-
-    // Initial message
-    this.loadingMessage.set('Chargement des avis en cours...');
-
-    // After 2 s
-    this.loadingTimeouts.push(
-      setTimeout(() => {
-        if (this.globalLoading()) {
-          this.loadingMessage.set('Initialisation des données...');
-        }
-      }, 2000)
-    );
-
-    // After 10 s
-    this.loadingTimeouts.push(
-      setTimeout(() => {
-        if (this.globalLoading()) {
-          this.loadingMessage.set(
-            'Le serveur démarre, cela peut prendre quelques instants...'
-          );
-        }
-      }, 10000)
-    );
-  }
-
-  private stopLoadingMessages(): void {
-    this.loadingTimeouts.forEach(clearTimeout);
-    this.loadingTimeouts = [];
-  }
-
 
   onFilterChange(type: ReviewType) {
     if (this.reviewType() === type) return;

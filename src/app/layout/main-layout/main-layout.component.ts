@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from 'src/app/core/components/footer/footer.component';
 import { HeaderComponent } from 'src/app/core/components/header/header.component';
+import { ColdStartNotifierService } from 'src/app/core/services/cold-start-notifier.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -14,4 +15,8 @@ import { HeaderComponent } from 'src/app/core/components/header/header.component
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss'],
 })
-export class MainLayoutComponent {}
+export class MainLayoutComponent {
+
+  coldStartNotifier = inject(ColdStartNotifierService);
+
+}
